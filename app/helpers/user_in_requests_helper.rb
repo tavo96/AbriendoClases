@@ -1,0 +1,2 @@
+module UserInRequestsHelper
+end
