@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @request.course_id %>
+</p>
+
+<p>
+  <strong>Schedule:</strong>
+  <%= @request.schedule_id %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @request.state_id %>
+</p>
+
+<%= link_to 'Edit', edit_request_path(@request) %> |
+<%= link_to 'Back', requests_path %>
