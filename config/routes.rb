@@ -1,4 +1,14 @@
 Myapp::Application.routes.draw do
+  resources :user_in_requests
+
+  resources :requests
+
+  resources :courses
+
+  resources :schedules
+
+  resources :states
+
   get "sessions/new"
   get "users/new"
   get "home/index"
