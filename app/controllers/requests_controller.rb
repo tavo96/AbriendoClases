@@ -25,9 +25,27 @@ class RequestsController < ApplicationController
   # POST /requests.json
   def create
     @request = Request.new(request_params)
-
     respond_to do |format|
-      if @request.save
+
+			#Ya hay una request
+  		if Request.where(:course_id => @request.course_id, :schedule_id => @request.schedule_id).count != 0
+				#El usuario ya es parte de la request
+				temp = Request.where(:course_id => @request.course_id, :schedule_id => @request.schedule_id)[0]
+  			if UserInRequest.where(:user_id => current_user.id, :request_id => temp.id).count == 0
+  				ur = UserInRequest.new
+  	      ur.user_id = current_user.id
+  	      ur.request_id = temp.id
+  				ur.save
+	        format.html { redirect_to "/requests", notice: 'Registrado con exito.' }
+  			else
+	        format.html { redirect_to "/requests/new", notice: 'Ya estabas registrado.' }
+        end
+			#No hay una request
+  		elsif @request.save
+				ur = UserInRequest.new
+        ur.user_id = current_user.id
+        ur.request_id = @request.id
+				ur.save
         format.html { redirect_to @request, notice: 'Request was successfully created.' }
         format.json { render action: 'show', status: :created, location: @request }
       else
