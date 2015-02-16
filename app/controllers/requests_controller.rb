@@ -25,6 +25,7 @@ class RequestsController < ApplicationController
   # POST /requests.json
   def create
     @request = Request.new(request_params)
+		@request.state_id = 1
     respond_to do |format|
 
 			#Ya hay una request

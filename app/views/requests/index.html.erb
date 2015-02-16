@@ -6,6 +6,7 @@
       <th>Course</th>
       <th>Schedule</th>
       <th>State</th>
+      <th>Registrados</th>
       <th></th>
       <th></th>
       <th></th>
@@ -18,9 +19,12 @@
         <td><%= request.course.name %></td>
         <td><%= request.schedule.name %></td>
         <td><%= request.state.name %></td>
+        <td><%= UserInRequest.where(:request_id => request.id).count %></td>
         <td><%= link_to 'Show', request %></td>
-        <td><%= link_to 'Edit', edit_request_path(request) %></td>
-        <td><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				<% if userIsCoordinator %>
+        	<td><%= link_to 'Edit', edit_request_path(request) %></td>
+	        <td><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				<% end %>
       </tr>
     <% end %>
   </tbody>
