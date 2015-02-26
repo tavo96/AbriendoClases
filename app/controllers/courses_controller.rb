@@ -42,7 +42,7 @@ class CoursesController < ApplicationController
   def update
     respond_to do |format|
       if @course.update(course_params)
-        format.html { redirect_to @course, notice: 'La clase ha sido editada.' }
+        format.html { redirect_to @course, notice: 'La clase ha sido actualizada.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

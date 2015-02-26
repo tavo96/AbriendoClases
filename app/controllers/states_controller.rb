@@ -28,7 +28,7 @@ class StatesController < ApplicationController
 
     respond_to do |format|
       if @state.save
-        format.html { redirect_to @state, notice: 'El estado ha sido creado.' }
+        format.html { redirect_to @state, notice: 'El estado fue creado exitosamente.' }
         format.json { render action: 'show', status: :created, location: @state }
       else
         format.html { render action: 'new' }
