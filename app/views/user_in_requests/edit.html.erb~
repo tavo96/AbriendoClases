@@ -1,6 +1,0 @@
-<h1>Editando la solicitud del usuario</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Mostrar', @user_in_request %> |
-<%= link_to 'Regresar', user_in_requests_path %>

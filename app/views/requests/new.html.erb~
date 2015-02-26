@@ -1,5 +1,0 @@
-<h1>Nueva solicitud</h1>
-
-<%= render 'form_new' %>
-
-<%= link_to 'Regresar', requests_path %>

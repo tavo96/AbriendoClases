@@ -1,6 +1,0 @@
-<h1>Editando solicitud</h1>
-
-<%= render 'form_edit' %>
-
-<%= link_to 'Mostrar', @request %> |
-<%= link_to 'Regresar', requests_path %>
