@@ -1,6 +1,6 @@
 
 
-<h1>Sign Up</h1>
+<h1>Registrarse</h1>
 
 <%= form_for @user do |f| %>
   <% if @user.errors.any? %>
@@ -14,18 +14,18 @@
     </div>
   <% end %>
   <p>
-    <%= f.label :email %><br />
+    <%= f.label :Email %><br />
     <%= f.text_field :email %>
   </p>
   <p>
-    <%= f.label :password %><br />
+    <%= f.label :Contraseña %><br />
     <%= f.password_field :password %>
   </p>
   <p>
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :Confirmar_contraseña %><br />
     <%= f.password_field :password_confirmation %>
   </p>
-  <p class="button"><%= f.submit %></p>
+  <p class="button"><%= submit_tag "Registrarse" %><%= f.submit %></p>
 <% end %>
 
 

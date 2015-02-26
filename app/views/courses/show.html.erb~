@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @course.name %>
+</p>
+
+<p>
+  <strong>Requisitos:</strong>
+  <%= @course.requirements %>
+</p>
+
+<p>
+  <strong>Requisitos recomendados:</strong>
+  <%= @course.recommended_requirements %>
+</p>
+
+<%= link_to 'Editar', edit_course_path(@course) %> |
+<%= link_to 'Regresar', courses_path %>

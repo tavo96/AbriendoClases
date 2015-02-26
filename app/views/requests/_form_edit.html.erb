@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :state_id %><br>
+    <%= f.label :Estado %><br>
     <select name="request[state_id]">
       <% State.all.each do |e| %>
         <option value="<%= e.id %>"><%= e.name %></option>

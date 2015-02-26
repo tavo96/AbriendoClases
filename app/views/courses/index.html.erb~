@@ -1,0 +1,31 @@
+<h1>Listado de clases disponibles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Requisitos</th>
+      <th>Requisitos recomendados</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.name %></td>
+        <td><%= course.requirements %></td>
+        <td><%= course.recommended_requirements %></td>
+        <td><%= link_to 'Mostrar', course %></td>
+        <td><%= link_to 'Editar', edit_course_path(course) %></td>
+        <td><%= link_to 'Borrar', course, method: :delete, data: { confirm: '¿Borrar clase?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nueva clase', new_course_path %>

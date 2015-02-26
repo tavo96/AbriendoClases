@@ -47,7 +47,7 @@ class RequestsController < ApplicationController
         ur.user_id = current_user.id
         ur.request_id = @request.id
 				ur.save
-        format.html { redirect_to @request, notice: 'Request was successfully created.' }
+        format.html { redirect_to @request, notice: 'La solicitud ha sido creada.' }
         format.json { render action: 'show', status: :created, location: @request }
       else
         format.html { render action: 'new' }
@@ -61,7 +61,7 @@ class RequestsController < ApplicationController
   def update
     respond_to do |format|
       if @request.update(request_params)
-        format.html { redirect_to @request, notice: 'Request was successfully updated.' }
+        format.html { redirect_to @request, notice: 'La solicitud ha sido actualizada.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

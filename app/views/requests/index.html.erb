@@ -1,11 +1,11 @@
-<h1>Listing requests</h1>
+<h1>Listado de solicitudes de clases</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Course</th>
-      <th>Schedule</th>
-      <th>State</th>
+      <th>Clase</th>
+      <th>Horario</th>
+      <th>Estado</th>
       <th>Registrados</th>
       <th></th>
       <th></th>
@@ -20,10 +20,10 @@
         <td><%= request.schedule.name %></td>
         <td><%= request.state.name %></td>
         <td><%= UserInRequest.where(:request_id => request.id).count %></td>
-        <td><%= link_to 'Show', request %></td>
+        <td><%= link_to 'Mostrar', request %></td>
 				<% if userIsCoordinator %>
-        	<td><%= link_to 'Edit', edit_request_path(request) %></td>
-	        <td><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        	<td><%= link_to 'Editar', edit_request_path(request) %></td>
+	        <td><%= link_to 'Borrar', request, method: :delete, data: { confirm: '¿Borrar solicitud?' } %></td>
 				<% end %>
       </tr>
     <% end %>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Request', new_request_path %>
+<%= link_to 'Nueva solicitud', new_request_path %>

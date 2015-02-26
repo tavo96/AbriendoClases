@@ -28,7 +28,7 @@ class UserInRequestsController < ApplicationController
 
     respond_to do |format|
       if @user_in_request.save
-        format.html { redirect_to @user_in_request, notice: 'User in request was successfully created.' }
+        format.html { redirect_to @user_in_request, notice: 'La solicitud del usuario ha sido creada.' }
         format.json { render action: 'show', status: :created, location: @user_in_request }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class UserInRequestsController < ApplicationController
   def update
     respond_to do |format|
       if @user_in_request.update(user_in_request_params)
-        format.html { redirect_to @user_in_request, notice: 'User in request was successfully updated.' }
+        format.html { redirect_to @user_in_request, notice: 'La solicitud del usuario ha sido actualizada.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

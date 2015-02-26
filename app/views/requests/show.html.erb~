@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @request.course.name %>
+</p>
+
+<p>
+  <strong>Schedule:</strong>
+  <%= @request.schedule.name %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @request.state.name %>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Cuenta</th>
+      <th>Telefono</th>
+      <th>Informacion Adicional</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% UserInRequest.where(:request_id => @request.id).each do |uir| %>
+			<% u = User.find_by_id(uir.user_id) %>
+      <tr>
+        <td><%= u.email %></td>
+        <td><%= u.cuenta %></td>
+        <td><%= u.telefono %></td>
+        <td><%= u.informacion_adicional %></td>
+			</tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if userIsCoordinator %>
+	<%= link_to 'Edit', edit_request_path(@request) %> |
+<% end %>
+<%= link_to 'Back', requests_path %>

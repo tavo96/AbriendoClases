@@ -28,7 +28,7 @@ class StatesController < ApplicationController
 
     respond_to do |format|
       if @state.save
-        format.html { redirect_to @state, notice: 'State was successfully created.' }
+        format.html { redirect_to @state, notice: 'El estado ha sido creado.' }
         format.json { render action: 'show', status: :created, location: @state }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class StatesController < ApplicationController
   def update
     respond_to do |format|
       if @state.update(state_params)
-        format.html { redirect_to @state, notice: 'State was successfully updated.' }
+        format.html { redirect_to @state, notice: 'El estado ha sido actualizado.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
