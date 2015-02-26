@@ -23,7 +23,7 @@
         <td><%= link_to 'Mostrar', request %></td>
 				<% if userIsCoordinator %>
         	<td><%= link_to 'Editar', edit_request_path(request) %></td>
-	        <td><%= link_to 'Borrar', request, method: :delete, data: { confirm: '¿Borrar solicitud?' } %></td>
+	        <td><%= link_to 'Borrar', request, method: :delete, data: { confirm: '¿Borrar propuesta?' } %></td>
 				<% end %>
       </tr>
     <% end %>
