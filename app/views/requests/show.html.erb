@@ -1,17 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Course:</strong>
+  <strong>Clase:</strong>
   <%= @request.course.name %>
 </p>
 
 <p>
-  <strong>Schedule:</strong>
+  <strong>Horario:</strong>
   <%= @request.schedule.name %>
 </p>
 
 <p>
-  <strong>State:</strong>
+  <strong>Estado:</strong>
   <%= @request.state.name %>
 </p>
 
@@ -39,6 +39,6 @@
 </table>
 
 <% if userIsCoordinator %>
-	<%= link_to 'Edit', edit_request_path(@request) %> |
+	<%= link_to 'Editar', edit_request_path(@request) %> |
 <% end %>
-<%= link_to 'Back', requests_path %>
+<%= link_to 'Regresar', requests_path %>
