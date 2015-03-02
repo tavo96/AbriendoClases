@@ -80,6 +80,15 @@ class RequestsController < ApplicationController
     end
   end
 
+  def registrarme
+    @request_id = params[:request_id]
+    uir = UserInRequest.new
+    uir.user_id = current_user.id
+    uir.request_id = @request_id
+    uir.save
+    redirect_to "/requests/"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_request
