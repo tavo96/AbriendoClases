@@ -1,0 +1,27 @@
+<h1>Listado de estados</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Estado</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @states.each do |state| %>
+      <tr>
+        <td><%= state.name %></td>
+        <td><%= link_to 'Mostrar', state %></td>
+        <td><%= link_to 'Editar', edit_state_path(state) %></td>
+        <td><%= link_to 'Borrar', state, method: :delete, data: { confirm: '¿Borrar estado?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo estado', new_state_path %>

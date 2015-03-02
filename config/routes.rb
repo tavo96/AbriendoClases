@@ -1,4 +1,17 @@
 Myapp::Application.routes.draw do
+
+  get "requests/registrarme" => "requests#registrarme"
+
+  resources :user_in_requests
+
+  resources :requests
+
+  resources :courses
+
+  resources :schedules
+
+  resources :states
+
   get "sessions/new"
   get "users/new"
   get "home/index"
@@ -6,7 +19,7 @@ Myapp::Application.routes.draw do
 get "log_out" => "sessions#destroy", :as => "log_out"
 get "log_in" => "sessions#new", :as => "log_in"
 get "sign_up" => "users#new", :as => "sign_up"
-root :to => "users#new"
+root :to => "sessions#new"
 resources :users
 resources :sessions
 
