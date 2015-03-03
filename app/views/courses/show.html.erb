@@ -1,19 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Clase:</strong>
   <%= @course.name %>
 </p>
 
 <p>
-  <strong>Requirements:</strong>
+  <strong>Requisitos:</strong>
   <%= @course.requirements %>
 </p>
 
 <p>
-  <strong>Recommended requirements:</strong>
+  <strong>Requisitos recomendados:</strong>
   <%= @course.recommended_requirements %>
 </p>
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<%= link_to 'Editar', edit_course_path(@course) %> |
+<%= link_to 'Regresar', courses_path %>

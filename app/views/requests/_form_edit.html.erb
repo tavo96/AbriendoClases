@@ -12,22 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :Clase %><br>
-    <select name="request[course_id]">
-      <% Course.all.each do |c| %>
-        <option value="<%= c.id %>"><%= c.name %> — Req: <%=c.requirements%></option>
-      <% end %>
-    </select>
-  </div>
-  <div class="field">
-    <%= f.label :Horario %><br>
-    <select name="request[schedule_id]">
-      <% Schedule.all.each do |s| %>
-        <option value="<%= s.id %>"><%= s.name %></option>
-      <% end %>
-    </select>
-  </div>
-  <div class="field">
     <%= f.label :Estado %><br>
     <select name="request[state_id]">
       <% State.all.each do |e| %>
@@ -36,6 +20,6 @@
     </select>
   </div>
   <div class="actions">
-    <%= f.submit 'Crear Propuesta' %>
+    <%= f.submit 'Actualizar' %>
   </div>
 <% end %>
