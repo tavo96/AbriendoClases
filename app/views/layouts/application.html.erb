@@ -17,6 +17,18 @@
   <% end %>
 </div>
 
+<% if current_user %>
+	<% if userIsCoordinator %>
+		<div>
+			<%= link_to 'Propuestas', requests_path %> |
+			<%= link_to 'Clases', courses_path %> |
+			<%= link_to 'Horarios', schedules_path %> |
+			<%= link_to 'Estados', states_path %> |
+			<%= link_to 'Usuarios en propuestas', user_in_requests_path %>
+		</div>
+	<% end %>
+<% end %>
+
 <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, :id => "flash_#{name}" %>
 <% end %>

@@ -4,7 +4,11 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all
+		if current_user.id == 1
+    	@courses = Course.all
+		else
+			redirect_to requests_url
+		end
   end
 
   # GET /courses/1
@@ -14,7 +18,11 @@ class CoursesController < ApplicationController
 
   # GET /courses/new
   def new
-    @course = Course.new
+		if current_user.id == 1
+    	@course = Course.new
+		else
+			redirect_to requests_url
+		end
   end
 
   # GET /courses/1/edit

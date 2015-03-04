@@ -1,6 +1,10 @@
-<h1>Editando la propuesta del usuario</h1>
+<% if userIsCoordinator %>
+	<h1>Editando la propuesta del usuario</h1>
 
-<%= render 'form' %>
+	<%= render 'form' %>
 
-<%= link_to 'Mostrar', @user_in_request %> |
-<%= link_to 'Regresar', user_in_requests_path %>
+	<%= link_to 'Mostrar', @user_in_request %> |
+	<%= link_to 'Regresar', user_in_requests_path %>
+<% else %>
+	<%= controller.redirect_to requests_path %>
+<% end %>

@@ -1,9 +1,13 @@
-<p id="notice"><%= notice %></p>
+<% if userIsCoordinator %>
+	<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Horario:</strong>
-  <%= @schedule.name %>
-</p>
+	<p>
+		<strong>Horario:</strong>
+		<%= @schedule.name %>
+	</p>
 
-<%= link_to 'Editar', edit_schedule_path(@schedule) %> |
-<%= link_to 'Regresar', schedules_path %>
+	<%= link_to 'Editar', edit_schedule_path(@schedule) %> |
+	<%= link_to 'Regresar', schedules_path %>
+<% else %>
+	<%= controller.redirect_to requests_path %>
+<% end %>
