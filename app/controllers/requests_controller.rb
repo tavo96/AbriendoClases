@@ -47,7 +47,7 @@ class RequestsController < ApplicationController
         ur.user_id = current_user.id
         ur.request_id = @request.id
 				ur.save
-        format.html { redirect_to @request, notice: 'Request was successfully created.' }
+        format.html { redirect_to @request, notice: 'La propuesta fue creada exitosamente.' }
         format.json { render action: 'show', status: :created, location: @request }
       else
         format.html { render action: 'new' }
@@ -61,7 +61,7 @@ class RequestsController < ApplicationController
   def update
     respond_to do |format|
       if @request.update(request_params)
-        format.html { redirect_to @request, notice: 'Request was successfully updated.' }
+        format.html { redirect_to @request, notice: 'La propuesta ha sido actualizada.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -78,6 +78,15 @@ class RequestsController < ApplicationController
       format.html { redirect_to requests_url }
       format.json { head :no_content }
     end
+  end
+
+  def registrarme
+    @request_id = params[:request_id]
+    uir = UserInRequest.new
+    uir.user_id = current_user.id
+    uir.request_id = @request_id
+    uir.save
+    redirect_to "/requests/"
   end
 
   private
