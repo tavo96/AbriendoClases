@@ -28,12 +28,14 @@
   <tbody>
     <% UserInRequest.where(:request_id => @request.id).each do |uir| %>
 			<% u = User.find_by_id(uir.user_id) %>
-      <tr>
+	<% if u.id != 1 %>      
+  <tr>
         <td><%= u.email %></td>
         <td><%= u.cuenta %></td>
         <td><%= u.telefono %></td>
         <td><%= u.informacion_adicional %></td>
 			</tr>
+	<% end %>
     <% end %>
   </tbody>
 </table>
