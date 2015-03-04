@@ -4,11 +4,7 @@ class StatesController < ApplicationController
   # GET /states
   # GET /states.json
   def index
-		if current_user.id == 1
 	    @states = State.all
-		else
-			redirect_to requests_path
-		end
   end
 
   # GET /states/1
@@ -18,11 +14,7 @@ class StatesController < ApplicationController
 
   # GET /states/new
   def new
-		if current_user.id == 1
 	    @state = State.new
-		else
-			redirect_to requests_path
-		end
   end
 
   # GET /states/1/edit
@@ -32,7 +24,6 @@ class StatesController < ApplicationController
   # POST /states
   # POST /states.json
   def create
-		if current_user.id == 1
 		  @state = State.new(state_params)
 
 		  respond_to do |format|
@@ -44,15 +35,11 @@ class StatesController < ApplicationController
 		      format.json { render json: @state.errors, status: :unprocessable_entity }
 		    end
 		  end
-		else
-			redirect_to requests_path
-		end
   end
 
   # PATCH/PUT /states/1
   # PATCH/PUT /states/1.json
   def update
-		if current_user.id == 1
 		  respond_to do |format|
 		    if @state.update(state_params)
 		      format.html { redirect_to @state, notice: 'El estado ha sido actualizado.' }
@@ -62,23 +49,16 @@ class StatesController < ApplicationController
 		      format.json { render json: @state.errors, status: :unprocessable_entity }
 		    end
 		  end
-		else
-			redirect_to requests_path
-		end
   end
 
   # DELETE /states/1
   # DELETE /states/1.json
   def destroy
-		if current_user.id == 1
 		  @state.destroy
 		  respond_to do |format|
 		    format.html { redirect_to states_url }
 		    format.json { head :no_content }
 		  end
-		else
-			redirect_to requests_path
-		end
   end
 
   private
