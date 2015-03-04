@@ -4,7 +4,11 @@ class SchedulesController < ApplicationController
   # GET /schedules
   # GET /schedules.json
   def index
+		if current_user.id == 1
 	    @schedules = Schedule.all
+		else
+			redirect_to requests_path
+		end
   end
 
   # GET /schedules/1
@@ -14,7 +18,11 @@ class SchedulesController < ApplicationController
 
   # GET /schedules/new
   def new
+		if current_user.id == 1
     	@schedule = Schedule.new
+		else
+			redirect_to requests_path
+		end
   end
 
   # GET /schedules/1/edit
@@ -24,6 +32,7 @@ class SchedulesController < ApplicationController
   # POST /schedules
   # POST /schedules.json
   def create
+		if current_user.id == 1
 		  @schedule = Schedule.new(schedule_params)
 
 		  respond_to do |format|
@@ -35,11 +44,15 @@ class SchedulesController < ApplicationController
 		      format.json { render json: @schedule.errors, status: :unprocessable_entity }
 		    end
 		  end
+		else
+			redirect_to requests_path
+		end
   end
 
   # PATCH/PUT /schedules/1
   # PATCH/PUT /schedules/1.json
   def update
+		if current_user.id == 1
 		  respond_to do |format|
 		    if @schedule.update(schedule_params)
 		      format.html { redirect_to @schedule, notice: 'El horario ha sido actualizado.' }
@@ -49,16 +62,23 @@ class SchedulesController < ApplicationController
 		      format.json { render json: @schedule.errors, status: :unprocessable_entity }
 		    end
 		  end
+		else 
+			redirect_to requests_path
+		end
   end
 
   # DELETE /schedules/1
   # DELETE /schedules/1.json
   def destroy
+		if current_user.id == 1
 		  @schedule.destroy
 		  respond_to do |format|
 		    format.html { redirect_to schedules_url }
 		    format.json { head :no_content }
 		  end
+		else
+			redirect_to requests_path
+		end
   end
 
   private
