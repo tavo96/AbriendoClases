@@ -1,6 +1,10 @@
-<h1>Editando horario</h1>
+<% if userIsCoordinator %>
+	<h1>Editando horario</h1>
 
-<%= render 'form' %>
+	<%= render 'form' %>
 
-<%= link_to 'Mostrar', @schedule %> |
-<%= link_to 'Regresar', schedules_path %>
+	<%= link_to 'Mostrar', @schedule %> |
+	<%= link_to 'Regresar', schedules_path %>
+<% else %>
+	<%= controller.redirect_to requests_path %>
+<% end %>

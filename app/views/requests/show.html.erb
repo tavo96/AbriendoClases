@@ -20,7 +20,9 @@
     <tr>
       <th>Email</th>
       <th>Cuenta</th>
+      <%if userIsCoordinator == true%>
       <th>Telefono</th>
+      <% end %>
       <th>Informacion Adicional</th>
     </tr>
   </thead>
@@ -28,12 +30,16 @@
   <tbody>
     <% UserInRequest.where(:request_id => @request.id).each do |uir| %>
 			<% u = User.find_by_id(uir.user_id) %>
-      <tr>
+	<% if u.id != 1 %>      
+  <tr>
         <td><%= u.email %></td>
         <td><%= u.cuenta %></td>
+        <%if userIsCoordinator == true%>
         <td><%= u.telefono %></td>
+        <% end %>
         <td><%= u.informacion_adicional %></td>
 			</tr>
+	<% end %>
     <% end %>
   </tbody>
 </table>
