@@ -63,10 +63,10 @@ class RequestsController < ApplicationController
         end
 			#No hay una request
 			elsif yaEstoyInscrito @request.course_id
-						format.html { redirect_to "/requests/new", notice: 'Ya estas registrado con la misma clase a otra hora borra tu otro registro y prueba de nuevo.' }
+						format.html { redirect_to "/requests/new", notice: 'Ya estas registrado con la misma clase a otra hora, borra tu otro registro y prueba de nuevo.' }
 			
 			elsif yaEstoyInscritoHorario @request.schedule_id
-						format.html { redirect_to "/requests/new", notice: 'Ya estas registrado a es hora con otra clase borra tu otro registro y prueba de nuevo.'}			
+						format.html { redirect_to "/requests/new", notice: 'Ya estas registrado a esa hora con otra clase, borra tu otro registro y prueba de nuevo.'}			
 
   		elsif @request.save
 				ur = UserInRequest.new
