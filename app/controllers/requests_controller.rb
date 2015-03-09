@@ -115,6 +115,16 @@ class RequestsController < ApplicationController
     redirect_to "/requests/"
   end
 
+	def quitarme
+		@request_id = params[:request_id]
+		u = UserInRequest.where(:user_id => current_user.id, :request_id => @request_id)[0]
+		if u != nil
+		u.destroy
+		u.save
+		end
+		redirect_to "/requests/"
+	end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_request

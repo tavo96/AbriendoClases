@@ -12,6 +12,7 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -74,6 +75,9 @@
         <% if UserInRequest.where(:user_id => current_user.id, :request_id =>request.id).count == 0 %>
           <td><%= link_to 'Registrarme', {:controller => :requests, :action=>'registrarme', :request_id => request.id} %></td>
         <% end %>
+        <% if UserInRequest.where(:user_id => current_user.id, :request_id =>request.id).count == 1 %>
+        	<td><%= link_to 'Quitarme', '/requests/quitarme?request_id='+request.id.to_s %></td>
+				<% end %>
       </tr>
 	<% end %>
     <% end %>
