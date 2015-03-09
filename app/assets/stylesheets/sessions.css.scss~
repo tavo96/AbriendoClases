@@ -58,7 +58,7 @@
 .subheader{
 	position: absolute;
 	top: calc(40% - 35px);
-	left: calc(78% - 255px);
+	left: calc(79% - 255px);
 	z-index: 2;
 }
 
