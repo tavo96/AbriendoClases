@@ -29,12 +29,9 @@
               <td><%= link_to 'Editar', edit_request_path(request) %></td>
 	      <td><%= link_to 'Borrar', request, method: :delete, data: { confirm: '¿Borrar propuesta?' } %></td>
             <% end %>
-		        <% if UserInRequest.where(:user_id => current_user.id, :request_id =>request.id).count == 0 %>
-		         <td><%= link_to 'Registrarme', {:controller => :requests, :action=>'registrarme', :request_id => request.id} %></td>
-		        <% end %>
-						<% if UserInRequest.where(:user_id => current_user.id, :request_id =>request.id).count == 1 %>
-		      		<td><%= link_to 'Quitarme', '/requests/quitarme?request_id='+request.id.to_s %></td>
-						<% end %>
+            <% if UserInRequest.where(:user_id => current_user.id, :request_id =>request.id).count == 0 %>
+              <td><%= link_to 'Registrarme', {:controller => :requests, :action=>'registrarme', :request_id => request.id} %></td>
+            <% end %>
          </tr>
       <% end %>
     <% end %>
@@ -75,11 +72,11 @@
         	<td><%= link_to 'Editar', edit_request_path(request) %></td>
 	        <td><%= link_to 'Borrar', request, method: :delete, data: { confirm: '¿Borrar propuesta?' } %></td>
 				<% end %>
-		    <% if UserInRequest.where(:user_id => current_user.id, :request_id =>request.id).count == 0 %>
-		      <td><%= link_to 'Registrarme', {:controller => :requests, :action=>'registrarme', :request_id => request.id} %></td>
-		    <% end %>
-	      <% if UserInRequest.where(:user_id => current_user.id, :request_id =>request.id).count == 1 %>
-	      	<td><%= link_to 'Quitarme', '/requests/quitarme?request_id='+request.id.to_s %></td>
+        <% if UserInRequest.where(:user_id => current_user.id, :request_id =>request.id).count == 0 %>
+          <td><%= link_to 'Registrarme', {:controller => :requests, :action=>'registrarme', :request_id => request.id} %></td>
+        <% end %>
+        <% if UserInRequest.where(:user_id => current_user.id, :request_id =>request.id).count == 1 %>
+        	<td><%= link_to 'Quitarme', '/requests/quitarme?request_id='+request.id.to_s %></td>
 				<% end %>
       </tr>
 	<% end %>
@@ -90,3 +87,4 @@
 <br>
 
 <%= link_to 'Nueva propuesta', new_request_path %>
+
