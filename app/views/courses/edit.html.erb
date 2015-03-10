@@ -1,6 +1,10 @@
-<h1>Editando clase</h1>
+<% if userIsCoordinator %>
+	<h1>Editando clase</h1>
 
-<%= render 'form' %>
+	<%= render 'form' %>
 
-<%= link_to 'Mostrar', @course %> |
-<%= link_to 'Regresar', courses_path %>
+	<%= link_to 'Mostrar', @course %> |
+	<%= link_to 'Regresar', courses_path %>
+<% else %>
+	<%= controller.redirect_to requests_path %>
+<% end %>

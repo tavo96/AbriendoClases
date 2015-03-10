@@ -21,6 +21,26 @@ class RequestsController < ApplicationController
   def edit
   end
 
+	def yaEstoyInscrito course_id
+		clases = UserInRequest.where(:user_id => current_user.id)
+		clases.each do|clase|
+			if Request.find_by_id(clase.request_id).course_id == course_id
+				return true
+			end
+		end
+		return false  
+	end	
+
+	def yaEstoyInscritoHorario schedule_id
+		clases = UserInRequest.where(:user_id => current_user.id)
+		clases.each do|clase|
+			if Request.find_by_id(clase.request_id).schedule_id == schedule_id
+				return true
+			end
+		end
+		return false  
+	end	
+
   # POST /requests
   # POST /requests.json
   def create
@@ -42,6 +62,12 @@ class RequestsController < ApplicationController
 	        format.html { redirect_to "/requests/new", notice: 'Ya estabas registrado.' }
         end
 			#No hay una request
+			elsif yaEstoyInscrito @request.course_id
+						format.html { redirect_to "/requests/new", notice: 'Ya estas registrado con la misma clase a otra hora borra tu otro registro y prueba de nuevo.' }
+			
+			elsif yaEstoyInscritoHorario @request.schedule_id
+						format.html { redirect_to "/requests/new", notice: 'Ya estas registrado a es hora con otra clase borra tu otro registro y prueba de nuevo.'}			
+
   		elsif @request.save
 				ur = UserInRequest.new
         ur.user_id = current_user.id
@@ -88,6 +114,16 @@ class RequestsController < ApplicationController
     uir.save
     redirect_to "/requests/"
   end
+
+	def quitarme
+		@request_id = params[:request_id]
+		u = UserInRequest.where(:user_id => current_user.id, :request_id => @request_id)[0]
+		if u != nil
+		u.destroy
+		u.save
+		end
+		redirect_to "/requests/"
+	end
 
   private
     # Use callbacks to share common setup or constraints between actions.
