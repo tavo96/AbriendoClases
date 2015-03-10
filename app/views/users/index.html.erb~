@@ -1,0 +1,36 @@
+<h1>Listado Usuarios disponibles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Contraseña</th>
+      <th>Contraseña Confirmada</th>
+      <th>Cuenta</th>
+      <th>Telefono</th>
+      <th>Informacion Adicional</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.password %></td>
+        <td><%= user.password_confirmation %></td>
+        <td><%= user.cuenta %></td>
+        <td><%= user.telefono %></td>
+        <td><%= user.informacion_adicional %></td>
+        <td><%= link_to 'Mostrar', user %></td>
+        <td><%= link_to 'Editar', edit_user_path(user) %></td>
+       </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Usuario', new1_user_path %>

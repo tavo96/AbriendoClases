@@ -13,6 +13,7 @@ Myapp::Application.routes.draw do
   resources :states
 
 
+
   get "sessions/new"
   get "users/new"
   get "home/index"

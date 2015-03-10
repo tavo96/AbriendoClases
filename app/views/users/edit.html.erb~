@@ -1,0 +1,7 @@
+<h1>Editando Usuario</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Mostrar', @user %> |
+<%= link_to 'Regresar', "/requests" %>
+<%= link_to 'Nuevo Usuario', new_user_path %>

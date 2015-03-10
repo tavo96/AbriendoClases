@@ -16,7 +16,7 @@ end
 
 def destroy
   session[:user_id] = nil
-  redirect_to root_url, :notice => "Sesion cerrada!"
+  redirect_to root_url, :notice => "Sesión cerrada!"
 end
 
 end
