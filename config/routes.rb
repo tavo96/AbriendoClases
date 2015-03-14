@@ -1,4 +1,8 @@
 Myapp::Application.routes.draw do
+
+  get "requests/registrarme" => "requests#registrarme"
+  get "requests/quitarme" => "requests#quitarme"
+
   resources :user_in_requests
 
   resources :requests

@@ -1,12 +1,15 @@
-<h1>Listing requests</h1>
+<h1>Listado de propuestas</h1>
 
+<h2>Propuestas Iniciales</h2>
 <table>
   <thead>
     <tr>
-      <th>Course</th>
-      <th>Schedule</th>
-      <th>State</th>
+      <th>Clase</th>
+      <th>Horario</th>
+      <th>Estado</th>
       <th>Registrados</th>
+      <th></th>
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -14,22 +17,73 @@
   </thead>
 
   <tbody>
-    <% @requests.each do |request| %>
+    <% @uir1 = UserInRequest.all.where(user_id:1).each do |inicial| %>
+      <% @requestito = Request.where(id: inicial.request_id).each do |request| %>
+        <tr>
+	  <td><%= request.course.name %></td>
+	  <td><%= request.schedule.name %></td>
+	  <td><%= request.state.name %></td>
+          <td><%= (UserInRequest.where(:request_id => request.id).count) -1%></td>
+          <td><%= link_to 'Mostrar', request %></td>
+	    <% if userIsCoordinator %>
+              <td><%= link_to 'Editar', edit_request_path(request) %></td>
+	      <td><%= link_to 'Borrar', request, method: :delete, data: { confirm: '¿Borrar propuesta?' } %></td>
+            <% end %>
+            <% if UserInRequest.where(:user_id => current_user.id, :request_id =>request.id).count == 0 %>
+              <td><%= link_to 'Registrarme', {:controller => :requests, :action=>'registrarme', :request_id => request.id} %></td>
+            <% end %>
+         </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Propuestas por alumnos</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Clase</th>
+      <th>Horario</th>
+      <th>Estado</th>
+      <th>Registrados</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <% @request = Request.all.each do |request| %>
+	<% existe = false %>
+	  <% UserInRequest.where(request_id: request.id).each do |uir| %>
+	   <% if uir.user_id == 1 %>
+	    <% existe = true %>
+	   <% end %>
+	  <% end %>
+	<% if existe == false %>
       <tr>
-        <td><%= request.course.name %></td>
-        <td><%= request.schedule.name %></td>
-        <td><%= request.state.name %></td>
+	<td><%= request.course.name %></td>
+	<td><%= request.schedule.name %></td>
+	<td><%= request.state.name %></td>
         <td><%= UserInRequest.where(:request_id => request.id).count %></td>
-        <td><%= link_to 'Show', request %></td>
+        <td><%= link_to 'Mostrar', request %></td>
 				<% if userIsCoordinator %>
-        	<td><%= link_to 'Edit', edit_request_path(request) %></td>
-	        <td><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        	<td><%= link_to 'Editar', edit_request_path(request) %></td>
+	        <td><%= link_to 'Borrar', request, method: :delete, data: { confirm: '¿Borrar propuesta?' } %></td>
+				<% end %>
+        <% if UserInRequest.where(:user_id => current_user.id, :request_id =>request.id).count == 0 %>
+          <td><%= link_to 'Registrarme', {:controller => :requests, :action=>'registrarme', :request_id => request.id} %></td>
+        <% end %>
+        <% if UserInRequest.where(:user_id => current_user.id, :request_id =>request.id).count == 1 %>
+        	<td><%= link_to 'Quitarme', '/requests/quitarme?request_id='+request.id.to_s %></td>
 				<% end %>
       </tr>
+	<% end %>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Request', new_request_path %>
+<%= link_to 'Nueva propuesta', new_request_path %>

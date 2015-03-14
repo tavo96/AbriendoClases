@@ -1,6 +1,10 @@
-<h1>Editing state</h1>
+<% if userIsCoordinator %>
+	<h1>Editando estado</h1>
 
-<%= render 'form' %>
+	<%= render 'form' %>
 
-<%= link_to 'Show', @state %> |
-<%= link_to 'Back', states_path %>
+	<%= link_to 'Mostrar', @state %> |
+	<%= link_to 'Regresar', states_path %>
+<% else %>
+	<%= controller.redirect_to requests_path %>
+<% end %>

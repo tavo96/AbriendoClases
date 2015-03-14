@@ -12,15 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :course_id %><br>
+    <%= f.label :Clase %><br>
     <select name="request[course_id]">
       <% Course.all.each do |c| %>
-        <option value="<%= c.id %>"><%= c.name %></option>
+        <option value="<%= c.id %>"><%= c.name %> — Req: <%=c.requirements%></option>
       <% end %>
     </select>
   </div>
   <div class="field">
-    <%= f.label :schedule_id %><br>
+    <%= f.label :Horario %><br>
     <select name="request[schedule_id]">
       <% Schedule.all.each do |s| %>
         <option value="<%= s.id %>"><%= s.name %></option>
@@ -28,7 +28,7 @@
     </select>
   </div>
   <div class="field">
-    <%= f.label :state_id %><br>
+    <%= f.label :Estado %><br>
     <select name="request[state_id]">
       <% State.all.each do |e| %>
         <option value="<%= e.id %>"><%= e.name %></option>
@@ -36,6 +36,6 @@
     </select>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Crear Propuesta' %>
   </div>
 <% end %>

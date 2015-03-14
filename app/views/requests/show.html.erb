@@ -1,17 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Course:</strong>
+  <strong>Clase:</strong>
   <%= @request.course.name %>
 </p>
 
 <p>
-  <strong>Schedule:</strong>
+  <strong>Horario:</strong>
   <%= @request.schedule.name %>
 </p>
 
 <p>
-  <strong>State:</strong>
+  <strong>Estado:</strong>
   <%= @request.state.name %>
 </p>
 
@@ -20,7 +20,9 @@
     <tr>
       <th>Email</th>
       <th>Cuenta</th>
+      <%if userIsCoordinator == true%>
       <th>Telefono</th>
+      <% end %>
       <th>Informacion Adicional</th>
     </tr>
   </thead>
@@ -28,17 +30,21 @@
   <tbody>
     <% UserInRequest.where(:request_id => @request.id).each do |uir| %>
 			<% u = User.find_by_id(uir.user_id) %>
-      <tr>
+	<% if u.id != 1 %>      
+  <tr>
         <td><%= u.email %></td>
         <td><%= u.cuenta %></td>
+        <%if userIsCoordinator == true%>
         <td><%= u.telefono %></td>
+        <% end %>
         <td><%= u.informacion_adicional %></td>
 			</tr>
+	<% end %>
     <% end %>
   </tbody>
 </table>
 
 <% if userIsCoordinator %>
-	<%= link_to 'Edit', edit_request_path(@request) %> |
+	<%= link_to 'Editar', edit_request_path(@request) %> |
 <% end %>
-<%= link_to 'Back', requests_path %>
+<%= link_to 'Regresar', requests_path %>

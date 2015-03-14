@@ -1,17 +1,16 @@
-
-
-<h1>Log in</h1>
-
-<%= form_tag sessions_path do %>
-  <p>
-    <%= label_tag :email %><br />
-    <%= text_field_tag :email, params[:email] %>
-  </p>
-  <p>
-    <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
-  </p>
-  <p class="button"><%= submit_tag "Log in" %></p>
-<% end %>
-
-
+<div class="body"></div>
+		<div class="grad"></div>
+		<div class="header">
+			<div>Propuestas Diseño Grafico</div>
+		</div>
+		<div class ="subheader">
+		<span>Iniciar Sesion </span>
+		</div>
+		<br>
+		 <%= form_tag sessions_path do %>		
+		<div class="login">
+				<%= text_field_tag :email,params[:email], type: "text", :placeholder => "email"%>
+				<%= password_field_tag :password,nil,:placeholder => "password"%>
+				<p class="button"><%= submit_tag "Log in" %></p>
+		</div>
+		<% end %>

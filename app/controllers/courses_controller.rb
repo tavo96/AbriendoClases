@@ -4,7 +4,11 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all
+		if current_user.id == 1
+    	@courses = Course.all
+		else
+			redirect_to requests_path
+		end
   end
 
   # GET /courses/1
@@ -14,7 +18,11 @@ class CoursesController < ApplicationController
 
   # GET /courses/new
   def new
-    @course = Course.new
+		if current_user.id == 1
+    	@course = Course.new
+		else
+			redirect_to requests_path
+		end
   end
 
   # GET /courses/1/edit
@@ -24,41 +32,53 @@ class CoursesController < ApplicationController
   # POST /courses
   # POST /courses.json
   def create
-    @course = Course.new(course_params)
+		if current_user.id == 1
+		  @course = Course.new(course_params)
 
-    respond_to do |format|
-      if @course.save
-        format.html { redirect_to @course, notice: 'Course was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @course }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
-      end
-    end
+		  respond_to do |format|
+		    if @course.save
+		      format.html { redirect_to @course, notice: 'La clase fue creada exitosamente.' }
+		      format.json { render action: 'show', status: :created, location: @course }
+		    else
+		      format.html { render action: 'new' }
+		      format.json { render json: @course.errors, status: :unprocessable_entity }
+		    end
+		  end
+		else
+			redirect_to requests_path
+		end
   end
 
   # PATCH/PUT /courses/1
   # PATCH/PUT /courses/1.json
   def update
-    respond_to do |format|
-      if @course.update(course_params)
-        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
-      end
-    end
+		if current_user.id == 1
+		  respond_to do |format|
+		    if @course.update(course_params)
+		      format.html { redirect_to @course, notice: 'La clase ha sido actualizada.' }
+		      format.json { head :no_content }
+		    else
+		      format.html { render action: 'edit' }
+		      format.json { render json: @course.errors, status: :unprocessable_entity }
+		    end
+		  end
+		else
+			redirect_to requests_path
+		end
   end
 
   # DELETE /courses/1
   # DELETE /courses/1.json
   def destroy
-    @course.destroy
-    respond_to do |format|
-      format.html { redirect_to courses_url }
-      format.json { head :no_content }
-    end
+		if current_user.id == 1
+		  @course.destroy
+		  respond_to do |format|
+		    format.html { redirect_to courses_url }
+		    format.json { head :no_content }
+		  end
+		else
+			redirect_to requests_path
+		end
   end
 
   private
