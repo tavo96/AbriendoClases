@@ -30,7 +30,7 @@
   <tbody>
     <% UserInRequest.where(:request_id => @request.id).each do |uir| %>
 			<% u = User.find_by_id(uir.user_id) %>
-	<% if u.id != 9 %>      
+	<% if u.id = 11 %>      
   <tr>
         <td><%= u.email %></td>
         <td><%= u.cuenta %></td>

@@ -1,3 +1,5 @@
+<h1>Informacion</h1>
+
 <%= form_for @user do |f| %>
   <% if @user.errors.any? %>
     <div class="error_messages">
@@ -22,8 +24,8 @@
     <%= f.password_field :password_confirmation %>
   </p>
    <p>
-    <%= f.label :Nombre %><br />
-    <%= f.text_field :name %>
+    <%= f.label :Nombre%><br />
+    <%= f.text_field :nombre %>
   </p>
 	<p>
     <%= f.label :Cuenta %><br />
@@ -34,11 +36,10 @@
     <%= f.text_field :telefono %>
   </p>
   <p>
-    <%= f.label :Lugar_de_residencia%><br />
+    <%= f.label :Informacion_Adicional%><br />
     <%= f.text_field :informacion_adicional %>
   </p>
-  <p class="button"><%= f.submit 'Actualizar' %></p>
-  
+  <p class="button"><%= f.submit 'Registrarse' %></p>
 <% end %>
 
 

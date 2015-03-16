@@ -6,7 +6,6 @@
       <th>Email</th>
       <th>Contraseña</th>
       <th>Contraseña Confirmada</th>
-      <th>Nombre</th>
       <th>Cuenta</th>
       <th>Telefono</th>
       <th>Informacion Adicional</th>
@@ -22,7 +21,6 @@
         <td><%= user.email %></td>
         <td><%= user.password %></td>
         <td><%= user.password_confirmation %></td>
-        <td><%= user.name %></td>
         <td><%= user.cuenta %></td>
         <td><%= user.telefono %></td>
         <td><%= user.informacion_adicional %></td>
