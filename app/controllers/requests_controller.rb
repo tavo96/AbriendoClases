@@ -107,12 +107,22 @@ class RequestsController < ApplicationController
   end
 
   def registrarme
-    @request_id = params[:request_id]
-    uir = UserInRequest.new
-    uir.user_id = current_user.id
-    uir.request_id = @request_id
-    uir.save
-    redirect_to "/requests/"
+		@schedule_id = params[:schedule_id]
+		@course_id = params[:course_id]
+		@request_id = params[:request_id]
+		if ( (yaEstoyInscrito (@course_id.to_i))	|| (yaEstoyInscritoHorario(@schedule_id.to_i)) )
+			respond_to do |format|
+  	  	format.html { redirect_to "/requests/", notice: 'Ya estas Registrado a esa Hora o en ese Curso!' }
+			end
+		else
+	   	uir = UserInRequest.new
+ 	  	uir.user_id = current_user.id
+ 	  	uir.request_id = @request_id
+ 	  	uir.save
+			respond_to do |format|
+  	  	format.html { redirect_to "/requests/", notice: 'Registrado Exitosamente' }
+			end
+    end
   end
 
 	def quitarme
