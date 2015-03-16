@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Contraseña:</strong>
+  <%= @user.password %>
+</p>
+
+<p>
+  <strong>Confirmar_Contraseña:</strong>
+  <%= @user.password_confirmation %>
+</p>
+
+<p>
+  <strong>Cuenta:</strong>
+  <%= @user.cuenta %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @user.telefono %>
+</p>
+
+<p>
+  <strong>Informacion_Adicional:</strong>
+  <%= @user.informacion_adicional %>
+</p>
+
+<%= link_to 'Editar', edit_user_path(@user) %> |
+<%= link_to 'Regresar', "/requests" %>
