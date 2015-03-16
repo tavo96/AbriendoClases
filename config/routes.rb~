@@ -1,7 +1,6 @@
 Myapp::Application.routes.draw do
 
   get "requests/registrarme" => "requests#registrarme"
-  get "requests/quitarme" => "requests#quitarme"
 
   resources :user_in_requests
 
@@ -12,6 +11,7 @@ Myapp::Application.routes.draw do
   resources :schedules
 
   resources :states
+
 
 
   get "sessions/new"
