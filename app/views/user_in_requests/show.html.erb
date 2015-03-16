@@ -1,14 +1,18 @@
-<p id="notice"><%= notice %></p>
+<% if userIsCoordinator %>
+	<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Usuario:</strong>
-  <%= @user_in_request.user_id %>
-</p>
+	<p>
+		<strong>Usuario:</strong>
+		<%= @user_in_request.user_id %>
+	</p>
 
-<p>
-  <strong>Propuesta:</strong>
-  <%= @user_in_request.request_id %>
-</p>
+	<p>
+		<strong>Propuesta:</strong>
+		<%= @user_in_request.request_id %>
+	</p>
 
-<%= link_to 'Editar', edit_user_in_request_path(@user_in_request) %> |
-<%= link_to 'Regresar', user_in_requests_path %>
+	<%= link_to 'Editar', edit_user_in_request_path(@user_in_request) %> |
+	<%= link_to 'Regresar', user_in_requests_path %>
+<% else %>
+	<%= controller.redirect_to requests_path %>
+<% end %>

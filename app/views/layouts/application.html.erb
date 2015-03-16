@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DigitalOcean Rails Application</title>
+  <title>Propuestas Diseño Gráfico</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -16,6 +16,16 @@
     <%= link_to "Cerrar sesión", log_out_path %>
   <% end %>
 </div>
+
+<% if current_user %>
+	<% if userIsCoordinator %>
+		<%= link_to "Propuestas", requests_path %> |
+		<%= link_to "Clases", courses_path %> |
+		<%= link_to "Horarios", schedules_path %> |
+		<%= link_to "Estados", states_path %> |
+		<%= link_to "Usuarios en propuestas", user_in_requests_path %>
+	<% end %>
+<% end %>
 
 <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, :id => "flash_#{name}" %>
