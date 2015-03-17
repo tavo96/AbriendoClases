@@ -1,3 +1,4 @@
+<% if userIsCoordinator %>
 <h1>Listado Usuarios disponibles</h1>
 
 <table>
@@ -6,6 +7,7 @@
       <th>Email</th>
       <th>Contraseña</th>
       <th>Contraseña Confirmada</th>
+      <th>Nombre</th>
       <th>Cuenta</th>
       <th>Telefono</th>
       <th>Informacion Adicional</th>
@@ -21,11 +23,13 @@
         <td><%= user.email %></td>
         <td><%= user.password %></td>
         <td><%= user.password_confirmation %></td>
+        <td><%= user.name %></td>
         <td><%= user.cuenta %></td>
         <td><%= user.telefono %></td>
         <td><%= user.informacion_adicional %></td>
         <td><%= link_to 'Mostrar', user %></td>
         <td><%= link_to 'Editar', edit_user_path(user) %></td>
+
        </tr>
     <% end %>
   </tbody>
@@ -34,3 +38,7 @@
 <br>
 
 <%= link_to 'Nuevo Usuario', new_user_path %>
+
+<% else %>
+	<%= controller.redirect_to requests_path %>
+<% end %>

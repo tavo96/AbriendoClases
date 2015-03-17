@@ -37,7 +37,7 @@
     <%= f.label :Lugar_de_residencia%><br />
     <%= f.text_field :informacion_adicional %>
   </p>
-  <p class="button"><%= f.submit 'Crear Nuevo Usuario' %></p>
+  <p class="button"><%= f.submit 'Actualizar' %></p>
   
 <% end %>
 
