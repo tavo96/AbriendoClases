@@ -1,3 +1,4 @@
+<% if userIsCoordinator %>
 <h1>Listado Usuarios disponibles</h1>
 
 <table>
@@ -36,3 +37,7 @@
 <br>
 
 <%= link_to 'Nuevo Usuario', new_user_path %>
+
+<% else %>
+	<%= controller.redirect_to requests_path %>
+<% end %>

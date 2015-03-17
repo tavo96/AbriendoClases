@@ -1,5 +1,9 @@
  <% u = current_user.id %> 
 <td><%= link_to 'Editar informacion', "/users/u/edit" %></td>
+<% if userIsCoordinator %>
+<td><%= link_to 'Nuevo Usuario', "/sign_up" %></td>
+<% end %>
+
 <h1>Listado de propuestas</h1>
 
 <h2>Propuestas Iniciales</h2>

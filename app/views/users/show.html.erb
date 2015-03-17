@@ -1,3 +1,4 @@
+<% if userIsCoordinator %>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -37,3 +38,7 @@
 
 <%= link_to 'Editar', edit_user_path(@user) %> |
 <%= link_to 'Regresar', "/requests" %>
+
+<% else %>
+<%= controller.redirect_to requests_path %>
+<% end %>
