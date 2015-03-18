@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  
+  layout "sessions"
 def new
 end
 
@@ -9,8 +9,8 @@ def create
     session[:user_id] = user.id
     redirect_to "/requests", :notice => "Conectado!"
   else
-    flash.now.alert = "Email o contrasena incorrecta"
-    render "new"
+    redirect_to root_url, :notice => "Correo o contraseña incorrecto!"
+    
   end
 end
 
