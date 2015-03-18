@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Propuestas Diseño Gráfico</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+
+<div id="user_nav">
+  <% if current_user %>
+    Conectado como <%= current_user.email %>.
+    <%= link_to "Cerrar sesión", log_out_path %>
+  <% end %>
+</div>
+
+<%= yield %>
+
+</body>
+</html>
