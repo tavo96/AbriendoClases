@@ -30,7 +30,7 @@
 	      <td><%= link_to 'Borrar', request, method: :delete, data: { confirm: '¿Borrar propuesta?' } %></td>
             <% end %>
             <% if UserInRequest.where(:user_id => current_user.id, :request_id =>request.id).count == 0 %>
-              <td><%= link_to 'Registrarme', {:controller => :requests, :action=>'registrarme', :request_id => request.id} %></td>
+              <td><%= link_to 'Registrarme', {:controller => :requests, :action=>'registrarme', :request_id => request.id ,:course_id => request.course_id, :schedule_id => request.schedule_id} %></td>
             <% end %>
 	    <% if UserInRequest.where(:user_id => current_user.id, :request_id =>request.id).count == 1 %>
         	<td><%= link_to 'Quitarme', '/requests/quitarme?request_id='+request.id.to_s %></td>
