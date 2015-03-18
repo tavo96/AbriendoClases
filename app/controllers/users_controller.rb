@@ -26,6 +26,8 @@ class UsersController < ApplicationController
 
 	def create
   	@user = User.new(params[:user])
+    @user.password = @user.cuenta
+    @user.password_confirmation = @user.cuenta
  		if @user.save
   	  redirect_to users_path, :notice => "El usuario ha sido registrado!"
   	else
