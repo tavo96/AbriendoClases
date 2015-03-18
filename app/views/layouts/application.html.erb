@@ -19,12 +19,18 @@
 
 <% if current_user %>
 	<% if userIsCoordinator %>
+		<%= link_to "Usuarios", users_path %> |
 		<%= link_to "Propuestas", requests_path %> |
 		<%= link_to "Clases", courses_path %> |
 		<%= link_to "Horarios", schedules_path %> |
 		<%= link_to "Estados", states_path %> |
-		<%= link_to "Usuarios en propuestas", user_in_requests_path %>
+		<%= link_to "Usuarios en propuestas", user_in_requests_path %> |
 	<% end %>
+<% end %>
+
+<% if current_user %>
+		<% u = current_user.id %> 
+		<%= link_to 'Editar informacion', "/users/u/edit" %>
 <% end %>
 
 <% flash.each do |name, msg| %>
