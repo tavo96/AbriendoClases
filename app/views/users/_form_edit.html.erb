@@ -9,25 +9,21 @@
       </ul>
     </div>
   <% end %>
+	<% if current_user %>
 	<p>
     <%= f.label :Nombre %><br />
-    <%= f.text_field :name %>
+    <%= f.hidden_field :name, {:value => current_user.name, :name => 'user[name]'} %>
+		<%= current_user.name %>
   </p>
-	<% if current_user %>
 		<p>
 			<%= f.label :Email %><br />
 			<%= f.hidden_field :email, {:value => current_user.email, :name => 'user[email]'} %>				
 			<%= current_user.email %>
 		</p>
-	<% else %>
-		<p>
-	    <%= f.label :Email %><br />
-	    <%= f.text_field :email %>
-	  </p>
-	<% end %>
 	<p>
     <%= f.label :Cuenta %><br />
-    <%= f.text_field :cuenta %>
+    <%= f.hidden_field :cuenta, {:value => current_user.cuenta, :name => 'user[cuenta]'} %>
+		<%= current_user.cuenta %>
   </p>
   <p>
     <%= f.label :Telefono %><br />
@@ -46,6 +42,7 @@
     <%= f.label :Confirmar_Contraseña%><br />
     <%= f.password_field :password_confirmation %>
   </p>
+	<% end %>
   <p class="button"><%= f.submit 'Registrar' %></p>
   
 <% end %>
