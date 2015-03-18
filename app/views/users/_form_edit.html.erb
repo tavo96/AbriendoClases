@@ -13,10 +13,18 @@
     <%= f.label :Nombre %><br />
     <%= f.text_field :name %>
   </p>
-	<p>
-    <%= f.label :Email %><br />
-    <%= f.text_field :email %>
-  </p>
+	<% if current_user %>
+		<p>
+			<%= f.label :Email %><br />
+			<%= f.hidden_field :email, {:value => current_user.email, :name => 'user[email]'} %>				
+			<%= current_user.email %>
+		</p>
+	<% else %>
+		<p>
+	    <%= f.label :Email %><br />
+	    <%= f.text_field :email %>
+	  </p>
+	<% end %>
 	<p>
     <%= f.label :Cuenta %><br />
     <%= f.text_field :cuenta %>
@@ -29,6 +37,7 @@
     <%= f.label :Informacion_Adicional %><br />
     <%= f.text_field :informacion_adicional %>
   </p>
+		Para hacer los cambios ingrese su contraseña (tambien la puede cambiar).
 	</p>
     <%= f.label :Contraseña %><br />
     <%= f.password_field :password %>

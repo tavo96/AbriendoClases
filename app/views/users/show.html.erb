@@ -1,3 +1,4 @@
+<% if userIsCoordinator %>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -6,13 +7,8 @@
 </p>
 
 <p>
-  <strong>Contraseña:</strong>
-  <%= @user.password %>
-</p>
-
-<p>
-  <strong>Confirmar_Contraseña:</strong>
-  <%= @user.password_confirmation %>
+  <strong>Nombre:</strong>
+  <%= @user.name %>
 </p>
 
 <p>
@@ -32,3 +28,6 @@
 
 <%= link_to 'Editar', edit_user_path(@user) %> |
 <%= link_to 'Regresar', "/requests" %>
+<% else %>
+	<%= controller.redirect_to requests_path %>
+<% end %>
