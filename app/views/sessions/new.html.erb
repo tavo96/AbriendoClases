@@ -13,6 +13,6 @@
 				<%= text_field_tag :email,params[:email], type: "text", :placeholder => "email"%>
 				<%= password_field_tag :password,nil,:placeholder => "password"%>
 				<p class="button"><%= submit_tag "Log in" %></p>
-				<p class= "error"><%= label_tag name=hola,notice %></p>
+				<p><%= notice %></p>
 		</div>
 		<% end %>
