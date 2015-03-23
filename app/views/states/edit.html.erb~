@@ -1,11 +1,11 @@
 <% if current_user %>
 <% if userIsCoordinator %>
-	<h1>Editando clase</h1>
+	<h1>Editando estado</h1>
 
 	<%= render 'form' %>
 
-	<%= link_to 'Mostrar', @course %> |
-	<%= link_to 'Regresar', courses_path %>
+	<%= link_to 'Mostrar', @state %> |
+	<%= link_to 'Regresar', states_path %>
 <% else %>
 	<%= controller.redirect_to requests_path %>
 <% end %>

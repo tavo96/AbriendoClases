@@ -22,14 +22,10 @@ class UserInRequestsController < ApplicationController
 
   # GET /user_in_requests/new
   def new
-		if current_user
 		if current_user.id == 1
 	    @user_in_request = UserInRequest.new
 		else
 			redirect_to requests_path
-		end
-		else
-		redirect_to log_in_path
 		end
   end
 

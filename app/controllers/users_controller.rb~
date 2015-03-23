@@ -5,15 +5,11 @@ class UsersController < ApplicationController
  # GET /users
   # GET /users.json
   def index
-	if current_user
 		if current_user.id == 1
     	@users = User.all
 		else
 			redirect_to requests_path
 		end
-	else
-	redirect_to log_in_path
-	end
   end
 
   # GET /users/1

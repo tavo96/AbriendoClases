@@ -1,0 +1,64 @@
+<% if current_user %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Clase:</strong>
+  <%= @request.course.name %>
+</p>
+
+<p>
+  <strong>Requisitos:</strong>
+  <%= @request.course.requirements %>
+</p>
+
+<p>
+  <strong>Requisitos recomendados:</strong>
+  <%= @request.course.recommended_requirements %>
+</p>
+
+<p>
+  <strong>Horario:</strong>
+  <%= @request.schedule.name %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @request.state.name %>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Cuenta</th>
+      <%if userIsCoordinator == true%>
+      <th>Telefono</th>
+      <% end %>
+      <th>Informacion Adicional</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% UserInRequest.where(:request_id => @request.id).each do |uir| %>
+			<% u = User.find_by_id(uir.user_id) %>
+	<% if u.id != 1 %>      
+  <tr>
+        <td><%= u.email %></td>
+        <td><%= u.cuenta %></td>
+        <%if userIsCoordinator == true%>
+        <td><%= u.telefono %></td>
+        <% end %>
+        <td><%= u.informacion_adicional %></td>
+			</tr>
+	<% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<% if userIsCoordinator %>
+	<%= link_to 'Editar', edit_request_path(@request) %> |
+<% end %>
+<%= link_to 'Regresar', requests_path %>
+<% else %>
+<%= controller.redirect_to log_in_path %>
+<% end %>
