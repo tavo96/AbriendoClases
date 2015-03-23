@@ -1,7 +1,0 @@
-
-<h1>Editando Usuario</h1>
-
-<%= render 'form_edit' %>
-
-
-

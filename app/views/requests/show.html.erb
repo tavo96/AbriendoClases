@@ -1,3 +1,4 @@
+<% if current_user %>
 <div class="content-wrapper">
  <section class="content-header">
 
@@ -32,6 +33,7 @@
   <thead>
     <tr>
       <th>Email</th>
+      <th>Nombre</th>
       <th>Cuenta</th>
       <%if userIsCoordinator == true%>
       <th>Telefono</th>
@@ -46,6 +48,7 @@
 	<% if u.id != 1 %>      
   <tr>
         <td><%= u.email %></td>
+        <td><%= u.name %></td>
         <td><%= u.cuenta %></td>
         <%if userIsCoordinator == true%>
         <td><%= u.telefono %></td>
@@ -63,5 +66,9 @@
 <%= link_to 'Regresar', requests_path %>
 
 
+
 </section>
 </div>
+<% else %>
+<%= controller.redirect_to log_in_path %>
+<% end %>
