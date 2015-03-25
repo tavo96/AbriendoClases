@@ -1,6 +1,10 @@
 class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :edit, :update, :destroy]
 
+def rooturl
+	redirect_to requests_path
+end
+
   # GET /requests
   # GET /requests.json
   def index
