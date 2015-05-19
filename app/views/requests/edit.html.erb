@@ -1,3 +1,4 @@
+<% if current_user %>
 <div class="content-wrapper">
  <section class="content-header">
 
@@ -7,3 +8,6 @@
 
 <%= link_to 'Mostrar', @request %> |
 <%= link_to 'Regresar', requests_path %>
+<% else %>
+<%= controller.redirect_to log_in_path %>
+<% end %>

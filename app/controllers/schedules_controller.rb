@@ -4,10 +4,14 @@ class SchedulesController < ApplicationController
   # GET /schedules
   # GET /schedules.json
   def index
+		if current_user
 		if current_user.id == 1
 	    @schedules = Schedule.all
 		else
 			redirect_to requests_path
+		end
+		else
+		redirect_to log_in_path
 		end
   end
 
@@ -18,10 +22,14 @@ class SchedulesController < ApplicationController
 
   # GET /schedules/new
   def new
+		if current_user
 		if current_user.id == 1
     	@schedule = Schedule.new
 		else
 			redirect_to requests_path
+		end
+		else
+		redirect_to log_in_path
 		end
   end
 
@@ -84,7 +92,11 @@ class SchedulesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_schedule
+			if current_user
       @schedule = Schedule.find(params[:id])
+			else
+			redirect_to log_in_path
+			end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

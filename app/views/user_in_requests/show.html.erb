@@ -1,3 +1,4 @@
+<% if current_user %>
 <% if userIsCoordinator %>
 	<p id="notice"><%= notice %></p>
 
@@ -15,4 +16,7 @@
 	<%= link_to 'Regresar', user_in_requests_path %>
 <% else %>
 	<%= controller.redirect_to requests_path %>
+<% end %>
+<% else %>
+<%= controller.redirect_to log_in_path %>
 <% end %>

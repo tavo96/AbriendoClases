@@ -4,11 +4,15 @@ class StatesController < ApplicationController
   # GET /states
   # GET /states.json
   def index
+	if current_user
 		if current_user.id == 1
 	    @states = State.all
 		else
 			redirect_to requests_path
 		end
+	else
+		redirect_to log_in_path
+	end
   end
 
   # GET /states/1
@@ -18,11 +22,15 @@ class StatesController < ApplicationController
 
   # GET /states/new
   def new
+	if current_user
 		if current_user.id == 1
 	    @state = State.new
 		else
 			redirect_to requests_path
 		end
+	else
+		redirect_to log_in_path
+	end
   end
 
   # GET /states/1/edit
@@ -84,7 +92,11 @@ class StatesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_state
+			if current_user
       @state = State.find(params[:id])
+			else
+			redirect_to log_in_path
+			end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

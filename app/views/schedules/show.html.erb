@@ -1,3 +1,4 @@
+<% if current_user %>
 <div class="content-wrapper">
  <section class="content-header">
 
@@ -16,3 +17,6 @@
 <% end %>
 </section>
 </div>
+<% else %>
+<%= controller.redirect_to log_in_path %>
+<% end %>

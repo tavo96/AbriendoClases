@@ -1,10 +1,18 @@
 class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :edit, :update, :destroy]
 
+def rooturl
+	redirect_to requests_path
+end
+
   # GET /requests
   # GET /requests.json
   def index
+		if current_user
     @requests = Request.all
+		else
+		redirect_to log_in_path
+		end
   end
 
   # GET /requests/1
@@ -14,7 +22,11 @@ class RequestsController < ApplicationController
 
   # GET /requests/new
   def new
+		if current_user
     @request = Request.new
+		else
+		redirect_to log_in_path
+		end
   end
 
   # GET /requests/1/edit
@@ -142,7 +154,11 @@ class RequestsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_request
+			if current_user
       @request = Request.find(params[:id])
+			else
+			redirect_to log_in_path
+			end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

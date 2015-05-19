@@ -5,11 +5,15 @@ class UsersController < ApplicationController
  # GET /users
   # GET /users.json
   def index
+	if current_user
 		if current_user.id == 1
     	@users = User.all
 		else
 			redirect_to requests_path
 		end
+	else
+	redirect_to log_in_path
+	end
   end
 
   # GET /users/1
@@ -51,8 +55,12 @@ class UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
 		
     def set_user 
+		if current_user 
 			u = current_user.id
       @user = User.find(u)
+		else
+			redirect_to log_in_path
+		end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

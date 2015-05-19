@@ -4,10 +4,14 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
+		if current_user
 		if current_user.id == 1
     	@courses = Course.all
 		else
 			redirect_to requests_path
+		end
+		else
+		redirect_to log_in_path
 		end
   end
 
@@ -18,10 +22,14 @@ class CoursesController < ApplicationController
 
   # GET /courses/new
   def new
+		if current_user
 		if current_user.id == 1
     	@course = Course.new
 		else
 			redirect_to requests_path
+		end
+		else
+		redirect_to log_in_path
 		end
   end
 
@@ -84,7 +92,11 @@ class CoursesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_course
+			if current_user
       @course = Course.find(params[:id])
+			else
+			redirect_to log_in_path
+			end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

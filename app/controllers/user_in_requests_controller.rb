@@ -4,11 +4,15 @@ class UserInRequestsController < ApplicationController
   # GET /user_in_requests
   # GET /user_in_requests.json
   def index
+	if current_user
 		if current_user.id == 1
     	@user_in_requests = UserInRequest.all
 		else
 			redirect_to requests_path
 		end
+	else
+		redirect_to log_in_path
+	end
   end
 
   # GET /user_in_requests/1
@@ -18,10 +22,14 @@ class UserInRequestsController < ApplicationController
 
   # GET /user_in_requests/new
   def new
+		if current_user
 		if current_user.id == 1
 	    @user_in_request = UserInRequest.new
 		else
 			redirect_to requests_path
+		end
+		else
+		redirect_to log_in_path
 		end
   end
 
@@ -84,7 +92,11 @@ class UserInRequestsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user_in_request
+			if current_user
       @user_in_request = UserInRequest.find(params[:id])
+			else
+			redirect_to log_in_path
+			end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

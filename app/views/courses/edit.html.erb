@@ -1,3 +1,4 @@
+<% if current_user %>
 <% if userIsCoordinator %>
 	<h1>Editando clase</h1>
 
@@ -7,4 +8,7 @@
 	<%= link_to 'Regresar', courses_path %>
 <% else %>
 	<%= controller.redirect_to requests_path %>
+<% end %>
+<% else %>
+<%= controller.redirect_to log_in_path %>
 <% end %>
