@@ -10,7 +10,11 @@
   <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" /></head>
 <body class="skin-blue">
 <header class="main-header">
-        <a href="../../index2.html" class="logo">DG Propuestas</a>
+	<% if current_user %>
+		<a href="../../requests" class="logo">DG Propuestas</a>
+	<% else %>
+        <a href="../../log_in" class="logo">DG Propuestas</a>
+	<% end %>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->

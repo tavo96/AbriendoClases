@@ -8,11 +8,7 @@ end
   # GET /requests
   # GET /requests.json
   def index
-		if current_user
     @requests = Request.all
-		else
-		redirect_to log_in_path
-		end
   end
 
   # GET /requests/1
