@@ -14,10 +14,13 @@
 				<%= password_field_tag :password,nil,:placeholder => "password"%>
 				<p class="button"><%= submit_tag "Iniciar sesion" %></p>
 				<p><%= notice %></p>
-				<%= link_to 'VER PROPUESTAS', requests_path %> <br></br>
+
+<a href="../../requests">
+<button  type="button"> Ver Propuestas </button></a> <br></br>
 <% @search = User.find_by_id(1) %>
 <% if @search.blank? %>
-	<%= link_to 'CREAR ADMINISTRADOR', sign_up_path %>
+	<a href="../../sign_up">
+	<button type="button"> Crear Administrador </button></a>
 <% end %>
 		</div>
 		<% end %>
