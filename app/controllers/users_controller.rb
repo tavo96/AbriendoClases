@@ -25,7 +25,20 @@ class UsersController < ApplicationController
 	end
 
 	def new
-  	@user = User.new
+	@search = User.find_by_id(1)
+	if @search.blank?
+		@user = User.new
+	else
+		if current_user
+			if current_user.id == 1
+  			@user = User.new
+			else
+				redirect_to requests_path
+			end
+		else
+			redirect_to log_in_path
+		end
+	end
 	end
 
 	def create
@@ -33,6 +46,7 @@ class UsersController < ApplicationController
     @user.password = @user.cuenta
     @user.password_confirmation = @user.cuenta
  		if @user.save
+	@user.save
   	  redirect_to users_path, :notice => "El usuario ha sido registrado!"
   	else
     	render "new"

@@ -1,6 +1,7 @@
 <div class="content-wrapper">
  <section class="content-header">
 
+<% if current_user %>
 <h1>Listado de propuestas</h1>
 
 <h2>Propuestas Iniciales</h2>
@@ -137,4 +138,63 @@
 <br>
 
 <%= link_to 'Nueva propuesta', new_request_path %>
+
+<% else %>
+<h1>Listado de propuestas</h1>
+
+<h2>Propuestas Iniciales</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Clase</th>
+      <th>Horario</th>
+      <th>Estado</th>
+      <th>Registrados</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @uir1 = UserInRequest.all.where(user_id:1).each do |inicial| %>
+      <% @requestito = Request.where(id: inicial.request_id).each do |request| %>
+        <tr>
+	  <td><%= request.course.name %></td>
+	  <td><%= request.schedule.name %></td>
+	  <td><%= request.state.name %></td>
+          <td><%= (UserInRequest.where(:request_id => request.id).count) -1%></td>
+         </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<h2>Propuestas por alumnos</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Clase</th>
+      <th>Horario</th>
+      <th>Estado</th>
+      <th>Registrados</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <% @request = Request.all.each do |request| %>
+	<% existe = false %>
+	  <% UserInRequest.where(request_id: request.id).each do |uir| %>
+	   <% if uir.user_id == 1 %>
+	    <% existe = true %>
+	   <% end %>
+	  <% end %>
+	<% if existe == false %>
+      <tr>
+	<td><%= request.course.name %></td>
+	<td><%= request.schedule.name %></td>
+	<td><%= request.state.name %></td>
+        <td><%= (UserInRequest.where(:request_id => request.id).count) %></td>
+      </tr>
+	<% end %>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
 
