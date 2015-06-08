@@ -144,7 +144,7 @@ end
 		u.destroy
 		u.save
 		end
-		redirect_to "/requests/"
+		redirect_to "/requests/", notice: 'Quitado de la propuesta'
 	end
 
   private
